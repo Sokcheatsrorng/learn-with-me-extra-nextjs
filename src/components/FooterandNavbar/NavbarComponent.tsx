@@ -11,19 +11,25 @@ const NavbarComponent = ({
     title: "Shadcnblocks.com",
   },
   menu = [
-    { title: "Home", url: "/" },
+    { title: "Home",
+      url: "/" ,
+      active: ""
+    },
     {
       title: "Products",
       url: "/product",
+      active: ""
      
     },
     {
       title: "About Us",
       url: "/about",
+      active: ""
     },
     {
       title: "Contact ",
       url: "/contact",
+      active: ""
     },
   ],
   auth = {

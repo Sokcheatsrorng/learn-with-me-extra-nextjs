@@ -1,14 +1,18 @@
-
+// "use client"
 import { MenuItem } from "./menu-item";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger } from "../ui/navigation-menu";
+// import { usePathname } from "next/navigation";
 
 export const  RenderMenuItemMobileComponent = (item: MenuItem) => {
+    // const pathName = usePathname();
+    // console.log(pathName)
   if (item.items) {
+
     return (
-      <AccordionItem key={item.title} value={item.title} className="border-b-0 gap-4">
+      <AccordionItem key={item.title} value={item.title} className="border-b-0 gap-4 ">
         <AccordionTrigger className="text-md py-0 font-semibold hover:no-underline">
-          {item.title}
+          {item?.title}
         </AccordionTrigger>
         <AccordionContent className="mt-2">
           {item.items.map((subItem) => (

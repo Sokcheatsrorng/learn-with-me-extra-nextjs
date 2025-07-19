@@ -3,6 +3,7 @@
 export interface MenuItem {
   title: string;
   url: string;
+  active: string;
   description?: string;
   icon?: React.ReactNode;
   items?: MenuItem[];

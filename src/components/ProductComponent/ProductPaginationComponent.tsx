@@ -18,7 +18,7 @@ type PaginationType = {
 }
 
 export function PaginationProducts({page,previous,next}: PaginationType) {
-  return (-
+  return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>

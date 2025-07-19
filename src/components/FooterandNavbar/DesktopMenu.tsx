@@ -1,9 +1,13 @@
+"use client"
 import Image from "next/image";
 // import { NavigationMenu, NavigationMenuList } from "../ui/navigation-menu";
 import { Button } from "../ui/button";
 import { Navbar1Props } from "./menu-item";
 import { NavigationMenu, NavigationMenuList } from "../ui/navigation-menu";
+
+import { usePathname } from "next/navigation";
 import { RenderMenuItemMobileComponent } from "./RenderMenuItemComponent";
+
 
 
 export default function DesktopMenuComponent(
@@ -13,6 +17,10 @@ export default function DesktopMenuComponent(
 }:Navbar1Props
 
 ){
+
+   const pathName = usePathname();
+
+   
    console.log("menu",menu)
     return (
       <nav className=" hidden justify-between lg:flex">
@@ -32,9 +40,18 @@ export default function DesktopMenuComponent(
             {/* list menuItem */}
             <div className="flex items-center ">
               <NavigationMenu>
-                <NavigationMenuList className="gap-5">
-                  {menu?.map((item) => RenderMenuItemMobileComponent(item))}
-                </NavigationMenuList>
+              
+                  {menu?.map((item,index) => (
+                      <NavigationMenuList key={index} 
+  
+                      className={
+                        pathName == item.url? `text-amber-200`: `text-black `
+                        }>
+                        { RenderMenuItemMobileComponent(item)}
+                           </NavigationMenuList>
+                  )
+                    )}
+             
               </NavigationMenu>
             </div>
 

@@ -5,9 +5,10 @@ export type CardProductResponseType = {
     title: string,
     description:string,
     image: string,
-    price?: number
-
-  
+    price?: number,
+    category:string;
 }
+
+
 
 // export type Product = Array<CardProductResponseType>

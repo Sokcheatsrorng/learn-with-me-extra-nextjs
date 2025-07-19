@@ -8,24 +8,19 @@ import { useEffect, useState } from "react";
 import PlaceHolder from '../../../public/asset/place_holder.png'
 import { MagicCard } from "@/components/magicui/magic-card";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 
-type PaginationType={
-    query:string,
-    currentPage: number
-}
 
-export default  function CardProductComponent(
-    {
-        query,
-        currentPage
-    }:
-    PaginationType
-
+export default  function CardProductSuggestionComponent(
+  
  
 ) {
     // declare state to catch up data 
     const [product, setProduct] = useState<CardProductResponseType[]>();
+        const searchParam = useSearchParams();
+        const category = searchParam.get("type")
+        console.log("The category type: ", category)
     
 
     // useEffect
@@ -40,22 +35,29 @@ export default  function CardProductComponent(
         //     },2000)
         //     return data;
         // }
+        
+    
+    
       
         const fetchData = () => {
-            fetch(`https://fakestoreapi.in/api/products?page=${currentPage}}&limit=${query}`)
+            fetch(`https://fakestoreapi.in/api/products/category?type=${category}`)
             .then(res => res.json())
             .then(res => setProduct(res.products))
         }
 
         fetchData();
     }, [])
+
+ 
   
 
     return (
         <div>
                <div className="grid container lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 p-8 ">
-            {
-                product?.map(({ image, title, description, price, id,category }) => (
+               
+                    {
+                product?.map(({ image, title, description, price, id }) => (
+                    
                     
                     <div key={id}>
         
@@ -65,7 +67,7 @@ export default  function CardProductComponent(
         <Skeleton className="h-4 w-[200px]" />
       </div> */}
                        
-                        <Link href={`/product/${id}?type=${category}`}>
+                        <Link href={`/product/${id}`}>
                            <MagicCard>
                                  <Card >
                             <CardBody className="overflow-visible py-2">
@@ -104,6 +106,8 @@ export default  function CardProductComponent(
                 ))
 
             }
+
+             
           
         </div>
         </div>
