@@ -39,7 +39,7 @@ const NavbarComponent = ({
 }: Navbar1Props) => {
   return (
     <section className="py-4">
-      <div className="container">
+      <div className="container mx-auto">
         {/* Desktop Menu */}
         <DesktopMenuComponent logo={logo} auth={auth} menu={menu}/>
        
